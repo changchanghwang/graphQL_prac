@@ -1,0 +1,19 @@
+{
+  "name": "graphQL_prac",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/changchanghwang/graphQL_prac.git",
+  "author": "CH_Hwang <hch950627@naver.com>",
+  "license": "MIT",
+  "dependencies": {
+    "graphql-yoga": "^1.18.3"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-3": "^6.24.1"
+  },
+  "scripts": {
+    "start": "nodemon --exec babel-node index.js"
+  }
+}
