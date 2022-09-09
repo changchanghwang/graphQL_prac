@@ -2,8 +2,18 @@ import * as Koa from 'koa';
 import * as koaBody from 'koa-body';
 import * as gracefulShutdown from 'http-graceful-shutdown';
 import { globalRouter } from './routes';
+import { createConnection } from 'typeorm';
+import entities from './entities';
+import { getConfig } from './config';
+
+const ormconfig = getConfig('/ormconfig');
 
 (async () => {
+  const conn = await createConnection({
+    ...ormconfig,
+    entities,
+  });
+
   const app = new Koa();
 
   app.use(koaBody({ multipart: true, jsonLimit: 10 * 1024 * 1024 })); // 10MB
@@ -20,7 +30,7 @@ import { globalRouter } from './routes';
     timeout: 30000,
     onShutdown: async () => {
       console.log('The server shuts down when the connection is cleaned up.');
-      // await conn.close();
+      await conn.close();
     },
     finally: () => {
       console.log('bye 👋');
