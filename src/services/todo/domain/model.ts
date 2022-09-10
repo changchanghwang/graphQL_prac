@@ -17,8 +17,10 @@ export class Todo {
   body!: string;
 
   private constructor(args: TodoCtorType) {
-    this.title = args.title;
-    this.body = args.body;
+    if(args){
+      this.title = args.title;
+      this.body = args.body;
+    }
   }
 
   static from(args: TodoCtorType) {

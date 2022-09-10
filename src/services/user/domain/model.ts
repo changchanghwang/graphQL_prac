@@ -14,8 +14,10 @@ export class User {
   password!: string;
 
   private constructor(args: UserCtorType) {
-    this.name = args.name;
-    this.password = args.password;
+    if(args){
+      this.name = args.name;
+      this.password = args.password;
+    }
   }
 
   static of(args: UserCtorType) {

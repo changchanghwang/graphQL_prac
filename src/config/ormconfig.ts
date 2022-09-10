@@ -4,6 +4,7 @@ const mysqlConfig = {
   port: '3306',
   database: 'todo',
   username: 'root',
+  password: '1234',
 };
 
 export default {
