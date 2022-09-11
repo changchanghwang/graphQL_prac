@@ -1,5 +1,4 @@
-import { Inject, Service } from "typedi";
-import { Transaction } from "typeorm";
+import { Service } from "typedi";
 import { User } from "../domain/model";
 import { getUserRepository } from "../infrastructure/repositories";
 
