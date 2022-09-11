@@ -9,7 +9,7 @@ const mysqlConfig = {
 
 export default {
   ...mysqlConfig,
-  synchronize: false,
+  synchronize: true,
   logging: true,
   // migrations: ['src/migration/**/*.ts'],
   supportBigNumbers: true,

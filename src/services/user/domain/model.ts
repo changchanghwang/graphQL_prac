@@ -1,10 +1,10 @@
-import { Entity, PrimaryColumn, Column } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 export type UserCtorType = { name: string; password: string };
 
-@Entity()
+@Entity('user')
 export class User {
-  @PrimaryColumn()
+  @PrimaryGeneratedColumn()
   id!: number;
 
   @Column()

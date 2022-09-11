@@ -1,7 +1,8 @@
+import 'reflect-metadata'
 import * as Koa from 'koa';
 import * as koaBody from 'koa-body';
 import * as gracefulShutdown from 'http-graceful-shutdown';
-import { globalRouter } from './routes';
+import { globalRouter } from './routes/api';
 import { createConnection } from 'typeorm';
 import entities from './entities';
 import { getConfig } from './config';
