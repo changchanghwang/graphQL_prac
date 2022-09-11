@@ -6,6 +6,7 @@ import { globalRouter } from './routes/api';
 import { createConnection } from 'typeorm';
 import entities from './entities';
 import { getConfig } from './config';
+import apolloServer from './apollo-server';
 
 const ormconfig = getConfig('/ormconfig');
 
@@ -16,6 +17,7 @@ const ormconfig = getConfig('/ormconfig');
   });
 
   const app = new Koa();
+  const graphqlServer = await apolloServer()
 
   app.use(koaBody({ multipart: true, jsonLimit: 10 * 1024 * 1024 })); // 10MB
 
@@ -23,6 +25,8 @@ const ormconfig = getConfig('/ormconfig');
    * Route middleware
    */
   app.use(globalRouter.middleware());
+  await graphqlServer.start()
+  app.use(graphqlServer.getMiddleware()); // path: /graphql
 
   const server = app.listen(3000);
 
